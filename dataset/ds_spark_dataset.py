@@ -1,4 +1,5 @@
-from dataset import ds_dataset
+from dataset.ds_dataset import DSDateSet
+
 
 class DSSparkDataSet(DSDateSet):
     """
@@ -9,7 +10,6 @@ class DSSparkDataSet(DSDateSet):
     def __init__(self, spark_df):
         super().__init__(spark_df)
 
-    @overrides(DSDateSet)
     def is_normalized(self):
         """
         Validate spark dataset feature normalization.

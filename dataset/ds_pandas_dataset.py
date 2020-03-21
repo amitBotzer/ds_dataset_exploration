@@ -1,15 +1,29 @@
-from dataset import ds_dataset
+from abc import ABC
 
-class DSPandasDataSet(DSDateSet):
+from dataset.ds_dataset import DSDateSet
+
+
+class DSPandasDataSet(DSDateSet, ABC):
     """
     The DSSparkDataSet implements DSDateSet and it is practically a wrapper with
     benefits to pandas dataframes.
     """
 
-    def __init__(self, spark_df):
-        super().__init__(spark_df)
+    def __init__(self, pandas_df):
+        super().__init__(pandas_df)
 
-    @overrides(DSDateSet)
+    def get_labeled_samples(self):
+        """
+
+        """
+        return self.df[self.df['is_labeled'] == True]
+
+    def get_unlabeled_samples(self):
+        """
+
+        """
+        return self.df[self.df['is_labeled'] == False]
+
     def is_normalized(self):
         """
         Validate pandas dataset feature normalization.

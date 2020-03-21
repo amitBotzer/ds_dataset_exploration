@@ -1,3 +1,6 @@
+from abc import abstractmethod
+
+
 class DSDateSet(object):
     """
     The DSDateSet object is meant to define a convention for datasets used. For
@@ -8,6 +11,20 @@ class DSDateSet(object):
 
     def __init__(self, df):
         self.df = df
+
+    @abstractmethod
+    def get_labeled_samples(self):
+        """
+
+        """
+        pass
+
+    @abstractmethod
+    def get_unlabeled_samples(self):
+        """
+
+        """
+        pass
 
     @abstractmethod
     def is_normalized(self):
