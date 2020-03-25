@@ -2,12 +2,8 @@ import numpy as np
 import pandas as pd
 
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import roc_auc_score
-from sklearn.model_selection import train_test_split
 
 from gt_representativity.gt_representativity import GTRepresentativeValidator
-
-from sklearn.svm import LinearSVC
 
 
 class GTRepClfMethod(GTRepresentativeValidator):

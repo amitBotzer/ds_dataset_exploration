@@ -3,10 +3,8 @@ from abc import abstractmethod
 
 class DSDateSet(object):
     """
-    The DSDateSet object is meant to define a convention for datasets used. For
-    example, we would like to ensure that there are certain columns such as
-    label column. This is practically a wrapper with benefits of spark or pandas
-    dataframe.
+    The DSDateSet object is meant to define a convention for datasets used. For example, we would like to ensure that
+    there are certain columns in the dataset. This is practically a wrapper with benefits of spark or pandas DataFrame.
     """
 
     def __init__(self, df):
@@ -15,6 +13,16 @@ class DSDateSet(object):
     @abstractmethod
     def get_labeled_samples(self):
         """
+        Get only the labeled samples of the dataset.
+
+        Parameters
+        ----------
+        self : ds_dataset
+
+        Returns
+        -------
+        DataFrame
+            pandas or Spark DataFrame that contains only the labeled samples of the whole dataset.
 
         """
         pass
@@ -22,6 +30,16 @@ class DSDateSet(object):
     @abstractmethod
     def get_unlabeled_samples(self):
         """
+        Get only the unlabeled samples of the dataset.
+
+        Parameters
+        ----------
+        self : ds_dataset
+
+        Returns
+        -------
+        DataFrame
+            pandas or Spark DataFrame that contains only the unlabeled samples of the whole dataset.
 
         """
         pass
@@ -38,7 +56,7 @@ class DSDateSet(object):
         Parameters
         ----------
         self : ds_dataset
-            The dataset to be validated
+            ds_dataset
 
         Returns
         -------
