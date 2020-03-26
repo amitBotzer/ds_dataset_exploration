@@ -9,7 +9,7 @@ class GTRepresentativeValidator(object):
     data upon which we train our models. If the GT isn't distributed as the total population does, then any insight
     gained from the GT is doubtful.
 
-    That's why it is highly important to verify the GT representativity and to quantify the GT bias if there's such.
+    That's why it is highly important to validate the GT representativity and to quantify the GT bias if there's such.
     There are several methods to verify this, and this is an interface from which every method should derive.
     """
 
@@ -19,6 +19,16 @@ class GTRepresentativeValidator(object):
     @abstractmethod
     def validate(self):
         """
+        Validate GT representativity.
+
+        Parameters
+        ----------
+        self : GTRepresentativeValidator initialized with DSDataSet instance.
+
+        Returns
+        -------
+        float
+            The deviation in percents from the desired distributions difference.
 
         """
         pass
