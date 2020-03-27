@@ -1,32 +1,30 @@
-from dataset import ds_dataset
+from abc import ABC
 
-class DSPandasDataSet(DSDateSet):
+from dataset.ds_dataset import DSDateSet
+
+
+class DSPandasDataSet(DSDateSet, ABC):
     """
-    The DSSparkDataSet implements DSDateSet and it is practically a wrapper with
-    benefits to pandas dataframes.
+    Implements DSDateSet for pandas DataFrames.
     """
 
-    def __init__(self, spark_df):
-        super().__init__(spark_df)
+    def __init__(self, pandas_df):
+        super().__init__(pandas_df)
 
-    @overrides(DSDateSet)
+    def get_labeled_samples(self):
+        """
+        Overrides DSDataSet.get_labeled_samples() method for pandas DataFrame.
+        """
+        return self.df[self.df['is_labeled'] == True]
+
+    def get_unlabeled_samples(self):
+        """
+        Overrides DSDataSet.get_unlabeled_samples() method for pandas DataFrame.
+        """
+        return self.df[self.df['is_labeled'] == False]
+
     def is_normalized(self):
         """
-        Validate pandas dataset feature normalization.
-
-        In order to run any mathematical experiment on a dataset, it must be
-        normalized. i.e. the features must be scaled to the same range. This
-        method validate this property.
-
-        Parameters
-        ----------
-        self : ds_dataset
-            The dataset to be validated
-
-        Returns
-        -------
-        bool
-            Whether the dataset is normalized or not
-
+        Overrides DSDataSet.is_normalized() method for pandas DataFrame.
         """
         raise NotImplementedError("Not implemented")
